@@ -1,0 +1,9 @@
+{
+    "name" : "ChemECar",
+    "version" : "0.0.1",
+    "dependencies" : {
+        "express" : "*",
+        "serialport" : "*",
+        "socket.io" : "*"
+    }
+}
