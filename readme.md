@@ -3,5 +3,6 @@
    - Brown Wire is power, connect it to 5 volts
    - Blue Wire is ground, you can connect it to any of the grounds on the arduino
    - Black wire is data, this MUST be connected to Digital Pin 2
-   ![Alt text](http://i.imgur.com/eGwzGzZ.jpg "Starry Night")
+   ![Imgur](http://i.imgur.com/HwSAlQ4.jpg?1)
+   <!-- Stuff to see if the comments will show up or not -->
 
