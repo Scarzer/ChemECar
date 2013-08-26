@@ -3,9 +3,10 @@ var app = express();
 var server  = require('http').createServer(app);
 var fs = require('fs');
 var io = require('socket.io').listen(server);
+var config = require('./config.json');
 
 var rtu = require('serialport');
-var serial = new rtu.SerialPort('/dev/cu.usbmodem1421', {
+var serial = new rtu.SerialPort(config.serialPort, {
     parser: rtu.parsers.readline("\n")
 })
 
@@ -38,6 +39,7 @@ serial.on('data', function(data){
 
 io.sockets.on('connection', function(socket){
     socket.on('Foo', function(data){
+        console.log("Got Data! " + JSON.stringify(data)) 
         if(data.start === true){
             serial.write('g');
         } else serial.write('s');
