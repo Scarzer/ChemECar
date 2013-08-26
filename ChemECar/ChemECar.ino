@@ -5,13 +5,23 @@
 int measurement;
 long rotaryTicks;
 boolean constantLoop;
+long millisOffset = 0;
+
 
 void rotaryInterrupt(){
   rotaryTicks++;
 }
 
+void timerStart(){
+    millisOffset = millis();
+}
+    
+void timerStop(){
+    // Not sure what to do here yet
+}
+
 void sendMeasurement(){
-  Serial.print(millis());
+  Serial.print(millis() - millisOffset);
   Serial.print(',');
   Serial.println(rotaryTicks);
 }
@@ -19,6 +29,8 @@ void sendMeasurement(){
 
 void setup(){
   Serial.begin(9600);
+  attachInterrupt(1, timerStart, RISING);
+  attachInterrupt(1, timerStop, FALLING);
 }
 
 void loop(){
