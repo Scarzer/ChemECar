@@ -5,7 +5,8 @@
 int measurement;
 long rotaryTicks;
 boolean constantLoop;
-long millisOffset = 0;
+long timeRunning = 0;
+long timeStart = 0;
 
 
 void rotaryInterrupt(){
@@ -13,29 +14,36 @@ void rotaryInterrupt(){
 }
 
 void timerStart(){
-    millisOffset = millis();
+    constantLoop = !constantLoop;
+    timeStart = millis();
+
 }
     
 void timerStop(){
+    constantLoop = false;
     // Not sure what to do here yet
+    
 }
 
 void sendMeasurement(){
-  Serial.print(millis() - millisOffset);
-  Serial.print(',');
-  Serial.println(rotaryTicks);
+  if((millis() - timeStart) > 200){
+      Serial1.print(millis() - timeStart);
+      Serial1.print(',');
+      Serial1.println(rotaryTicks);
+  }
 }
 
 
 void setup(){
   Serial.begin(9600);
-  attachInterrupt(1, timerStart, RISING);
-  attachInterrupt(1, timerStop, FALLING);
+  Serial1.begin(9600);
+  Serial.println("Stuff");
+  attachInterrupt(1, timerStart, CHANGE);
 }
 
 void loop(){
-  if(Serial.available() > 0){
-    char recieved = Serial.read();
+  if(Serial1.available() > 0){
+    char recieved = Serial1.read();
     switch(recieved){
       
       case 'G':
