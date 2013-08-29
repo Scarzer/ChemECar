@@ -14,8 +14,10 @@ void rotaryInterrupt(){
 }
 
 void timerStart(){
+  if( (millis() - timeStart) > 200){
     constantLoop = !constantLoop;
     timeStart = millis();
+  }
 
 }
     
