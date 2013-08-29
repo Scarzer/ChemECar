@@ -19,24 +19,26 @@
 
 3. This will give you an output of all the currently loaded serial devices, the output will look like the following:
 
+
+      ```
       /dev/tty.Bluetooth
       /dev/tty.someIphone
-    
+      ```
 4. At this point, plug in the xbee and run `ls /dev/tty.*`, the output will now look like the following:
 
-```
+      ```
       /dev/tty.Bluetooth
       /dev/tty.someIphone
       /dev/tty.usbserial1452
-```  
+      ```
 
 5. The last line of the output is the xbee! Save that line, because we are going to have to use it to replace a line in the file that is in the package that you downloaded! (Note that you need to get the last line of YOUR input. Mine might not be the same as yours)
 
 6. Open up `config.json` with a text edior, there will only be one line that you could change. It will look like
 
-``` JSON
-   "serialPort" : "/dev/ttyUSB0"
-```
+      ```
+      "serialPort" : "/dev/ttyUSB0"
+      ```
 
 7. Here you'll have to change the `/dev/ttyUSB0` to the location of the xbee. In our example, we replace it with `/dev/tty.usbserial1452`
 
