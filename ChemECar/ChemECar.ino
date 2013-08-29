@@ -14,7 +14,7 @@ void rotaryInterrupt(){
 }
 
 void timerStart(){
-  if( (millis() - timeStart) > 200){
+  if( (millis() - timeStart) > 400){
     constantLoop = !constantLoop;
     timeStart = millis();
   }
@@ -28,7 +28,7 @@ void timerStop(){
 }
 
 void sendMeasurement(){
-  if((millis() - timeStart) > 200){
+  if((millis() - timeStart) > 100){
       Serial1.print(millis() - timeStart);
       Serial1.print(',');
       Serial1.println(rotaryTicks);
