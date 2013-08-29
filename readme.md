@@ -39,6 +39,6 @@
 
 -Once you've done this, enter `npm install` and wait for everything installed. If you encounter any issues with this, please email me immediately. Debugging might be more involved.
 
--Finally, once everything is said and done, enter `node app.js`. This will start the program. If everything runs without any error or issue, open up your favorite web browser and enter the url [localhost:8080](localhost:8080)
+-Finally, once everything is said and done, enter `node app.js`. This will start the program. If everything runs without any error or issue, open up your favorite web browser and enter the url [localhost:8080](http://localhost:8080)
 
       
