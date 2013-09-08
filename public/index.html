@@ -74,6 +74,8 @@
                 <p>Data Collection</p>
                 <label for="trigger">Trigger</label>
                 <input type="button" onclick="sendTrigger()" id="trigger">On/Off</input>
+                <label for="adjustmentVal">How many P/R: </label>
+                <input type="text" onchange="changedPR()" id="adjustmentVal"></input>
                 <p>Time Passed: <span id="timePassed"></span></p>
                 <p>Pulses Measured: <span id="pulsesMeasured"></span></p>
                 <p>Total Rotations: <span id="totRotations"></span></p>
@@ -122,10 +124,12 @@
             s.parentNode.insertBefore(g,s)}(document,'script'));
 
             var socket = io.connect('http://localhost:8080');
+            var adjustVal = 683;
+            $('#adjustmentVal').val(adjustVal);
             socket.on('hello', function(data){
                 console.log(data);
                 $('#timePassed').text(data.time/1000);
-                $('#totRotations').text(data.adjusted);
+                $('#totRotations').text(data.rawVal/adjustVal);
                 $('#pulsesMeasured').text(data.rawVal);
             });
 
@@ -136,6 +140,12 @@
                 socket.emit("Foo", {start : triggerStat});
                 console.log(triggerStat)
                 triggerStat = !triggerStat;
+            }
+
+            function changedPR(){
+                var sentVal = $('#adjustmentVal').val();
+                if( sentVal > 0) adjustVal = sentVal
+                
             }
         </script>
     </body>
