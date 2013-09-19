@@ -86,8 +86,8 @@
             <!-- Example row of columns-->
             <div class="row">
                 <div class="span6">
-                    <h2>Flot Chart</h2>
-                    <canvas id="flotChart"></canvas>
+                    <h2>Excel Data</h2>
+                    <div id="excelData"></div>
                 </div>
             </div>
             <div class="row">
@@ -128,9 +128,11 @@
             $('#adjustmentVal').val(adjustVal);
             socket.on('hello', function(data){
                 console.log(data);
+                if(!( 10 >=  data.rawVal)){
                 $('#timePassed').text(data.time/1000);
                 $('#totRotations').text(data.rawVal/adjustVal);
                 $('#pulsesMeasured').text(data.rawVal);
+            }
             });
 
             var triggerStat = false;
@@ -147,6 +149,12 @@
                 if( sentVal > 0) adjustVal = sentVal
                 
             }
+
+            setInterval(function makeExcelData(){
+                var dataPoint = " "  + $('#timePassed').text() + "," + $('#pulsesMeasured') + ',' + $('totRoations')
+                $('#excelData').append("<p>" + dataPoint + "</p>")
+            }, 500)
+
         </script>
     </body>
 </html>

@@ -17,9 +17,10 @@ server.listen(8080);
 
 app.get('/', function(req, res){
     console.log("Connection was made!!");
-    var file = fs.readFileSync('./public/index.html');
+    var file = fs.readFile('./public/index.html', function(file){
     res.render(file);
     res.end();
+    });
 });
 
 app.post('/startCollection', function(req, res){
