@@ -7,6 +7,7 @@ long rotaryTicks;
 boolean constantLoop;
 long timeRunning = 0;
 long timeStart = 0;
+long distancePassed = 0;
 
 
 void rotaryInterrupt(){
@@ -17,6 +18,7 @@ void timerStart(){
   if( (millis() - timeStart) > 400){
     constantLoop = !constantLoop;
     timeStart = millis();
+    distancePassed = rotaryTicks;
   }
 
 }
@@ -31,7 +33,11 @@ void sendMeasurement(){
   if((millis() - timeStart) > 100){
       Serial1.print(millis() - timeStart);
       Serial1.print(',');
-      Serial1.println(rotaryTicks);
+      Serial1.print(rotaryTicks);
+      Serial1.print(',');
+      Serial1.print(distancePassed);
+      Serial1.print(',');
+      Serial1.print('\n');
   }
 }
 
