@@ -1,5 +1,5 @@
 var rtu = require('serialport').SerialPort
-var serial = new rtu('/dev/slave', {
+var serial = new rtu('/dev/ttys008', {
     baudrate : 57600})
 
 var rotationsMade = 0;

@@ -1,3 +1,4 @@
 {
-    "serialPort" : "/dev/ttyUSB0"
+    "serialPort" : "/dev/tty.usbserial-AM025Y3K"
+    
 }
