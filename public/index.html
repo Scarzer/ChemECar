@@ -88,6 +88,7 @@
                 <div class="span6">
                     <h2>Excel Data</h2>
                     <div id="excelData"></div>
+                    <button id="clearData" action="clearData()">Clear Data</button>
                 </div>
             </div>
             <div class="row">
@@ -151,7 +152,10 @@
             }
 
             setInterval(function makeExcelData(){
-                var dataPoint = " "  + $('#timePassed').text() + "," + $('#pulsesMeasured') + ',' + $('totRoations')
+                var timePassed = $('#timePassed').text();
+                var pulsesMeasured = $('#pulsesMeasured').text();
+                var totRotations = $('#totRotations').text();
+                var dataPoint = timePassed + ',' + pulsesMeasured + ',' + totRotations
                 $('#excelData').append("<p>" + dataPoint + "</p>")
             }, 500)
 

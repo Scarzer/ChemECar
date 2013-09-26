@@ -7,6 +7,7 @@
 #excelData{
     height : 200px;
     background-color : #888888;
+    overflow : auto;
 }
 
 
